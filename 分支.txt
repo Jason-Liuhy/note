@@ -1,0 +1,17 @@
+1.git branch mymaster
+2.git checkout mymaster
+3.git add .
+4.git commit -m ''
+5.git status // 检查是否成功提交
+6.git checkout master
+7.git merge mymaster //新分支提交的改动合并到主分支
+8.git push -u origin master// 提交代码到远程仓库
+
+
+
+
+commit 没写 -m ‘’
+ 1.按下i键
+此时光标再最上面，输入要提交的更改，按esc，然后输入：
+
+输入wq后，回车
