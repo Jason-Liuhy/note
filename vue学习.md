@@ -58,3 +58,22 @@
 
 
 
+### 4. v-if v-show
+
+使用频率高用v-show ，v-if会直接删除元素节点,template中只能使用v-if，
+
+v-else-if v-else 只能有v-if才能嵌套，且嵌套的元素中没有被打断。
+
+<template v-if="1===1">
+    <h1>
+        hello
+    </h1>
+    <h2>
+        world
+    </h2>
+</template>>
+
+
+
+
+
