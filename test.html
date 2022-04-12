@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据过滤</title>
+    <script src="js/vue.js"></script>
+   
+</head>
+<body>
+    <div id="my">
+        <h2>人员展示</h2>
+        {{school.dept}}
+        <input  type="text" v-model="keywords">
+        <ul>
+            <li v-for="(p,index) in filpersons" :key="p.id">
+                {{p.name}} --------{{p.age}}------{{p.sex}}
+            </li>
+        </ul>
+        <button @click="type=2">升序</button>
+        <button @click="type=1">降序</button>
+        <button @click="type=0">原顺序</button>
+    </div>
+    <script>
+        // window.onload=function(){ 
+          const vm =  new Vue({
+             el:"#my",
+             data:{
+                 persons:[
+                     {id:"1",name:"jason",age:22,sex:"男"},
+                     {id:"2",name:"nick",age:23,sex:"男"},
+                     {id:"3",name:"wenson",age:24,sex:"女"},
+                     {id:"4",name:"mart",age:25,sex:"男"},
+                 ],
+                 // filpersons:[],
+                 school:{
+ 
+                 },
+                 keywords:'',
+                 type:0
+             },
+             methods:{
+                 // personfilter(){
+                 //     var self=this;
+                 //     this.persons= this.persons.filter((item,index)=>{
+                 //         return item.name.includes(self.keywords);
+                 //     })
+                 // }
+             },
+             // watch:{//数据的变化，立刻被监听到
+             //     // keywords(val){
+             //     //         this.filpersons= this.persons.filter((item)=>{
+             //     //          return item.name.indexOf(val)!=-1;
+             //     //     })
+             //     // },
+             //     keywords:{
+             //         immediate:true,
+             //         handler(val){
+             //             this.filpersons=this.persons.filter(p=>{
+             //                 return p.name.includes(val);
+             //             });
+             //         }
+             //     }
+             // },
+             computed:{//计算属性和watch都能实现的，优先用技术属性，
+                 filpersons(){
+                     let fp= this.persons.filter((p)=>{
+                         return p.name.includes(this.keywords);
+                     });
+                     if(this.type){
+                         fp.sort((a,b)=>{
+                             return this.type==1?b.age-a.age:a.age-b.age;
+                         });
+                     }
+                     return fp;//计算属性必须要有返回值
+                 }
+             }
+         })
+    //  }
+ 
+     // let data={
+     //     name:'jason',
+     //     age:18
+     // }
+     // let o = new Observe(data);
+     // console.log(o)
+     // o.name="jerry";
+ 
+     // function Observe(obj)
+     // {
+     //     const keys = Object.keys(obj);
+     //     keys.forEach((k)=>{
+     //         Object.defineProperty(this,k,{
+     //             get(){
+     //                 return obj[k];
+     //             },
+     //             set(val)
+     //             {
+     //                 obj[k] = val;
+     //                 console.log("对象被改变了");
+     //             }
+     //          })
+     //     });
+         
+     // }
+     </script>
+</body>
+</html>

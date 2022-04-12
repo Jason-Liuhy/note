@@ -73,7 +73,37 @@ v-else-if v-else 只能有v-if才能嵌套，且嵌套的元素中没有被打�
     </h2>
 </template>>
 
+### 5. 数据监测的原理
+    归根揭底还是改变了属性的值。引起了set的调用。
 
+    模拟：let data={
+        name:"jason",
+        age:18
+    }
+
+    function Observer(obj)
+    {
+        const keys = Object.keys(obj);
+        keys.forEach((k)=>{
+            Object.defineProperty(this,k,{
+                get(){
+                    return obj[k];
+                }
+                set(val){
+                    obj[k]=val;
+                }
+            })
+        });
+    }
+
+    var vm = new Observer(data);
+    vm.name="test";//改变了对象的值，调用了set方法。然后更新虚拟dom，虚拟dom和old 虚拟dom对比。看哪些属性改变了。
+                    //更新model
+
+    数组中监测：data中数组值的改变，vue只支持6个数组改变的操作。push，pop，shife，unshife，splice，sort,reverse。
+
+    Vue.set(vm._data.ss.aa ,1,"11");
+    vm.$set(vm._data.ss.aa,1,"111");
 
 
 
