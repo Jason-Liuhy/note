@@ -105,5 +105,26 @@ v-else-if v-else 只能有v-if才能嵌套，且嵌套的元素中没有被打�
     Vue.set(vm._data.ss.aa ,1,"11");
     vm.$set(vm._data.ss.aa,1,"111");
 
+    ### 6.表单 
+    收集表单数据：
+					若：<input type="text"/>，则v-model收集的是value值，用户输入的就是value值。
+					若：<input type="radio"/>，则v-model收集的是value值，且要给标签配置value值。
+					若：<input type="checkbox"/>
+							1.没有配置input的value属性，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+							2.配置input的value属性:
+									(1)v-model的初始值是非数组，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+									(2)v-model的初始值是数组，那么收集的的就是value组成的数组
+					备注：v-model的三个修饰符：
+									lazy：失去焦点再收集数据
+									number：输入字符串转为有效的数字
+									trim：输入首尾空格过滤
+
+ ### 7.内置指令
+    1.v-text  <div  v-text="替换掉div里的所有内容">默认的都是无效的</div>
+    2.v-html  <div v-html="<h3>也是替换div里的内容，但是会识别标签</h3>">
+    3.v-cloak  没有值 ，本质是一个特殊属性，vue实例创建完毕并接管容器后，会删掉v-cloak属性，使用css配合v-cloak,可以解决网速慢时候，页面展示{{xxx}}的问题。[v-cloak]{display:none;}
+    4.v-once <div v-once @click="n++">{{n}}</div>  这里的n只执行一次，相当于初始化，可以优化一些特殊的情景调用
+
+
 
 

@@ -21,6 +21,10 @@
         <button @click="type=2">升序</button>
         <button @click="type=1">降序</button>
         <button @click="type=0">原顺序</button>
+
+<br/>
+        <div v-once>{{n}}</div>
+        <button @click="n++">n+1就执行一次</button>
     </div>
     <script>
         // window.onload=function(){ 
@@ -38,7 +42,8 @@
  
                  },
                  keywords:'',
-                 type:0
+                 type:0,
+                 n:0
              },
              methods:{
                  // personfilter(){
