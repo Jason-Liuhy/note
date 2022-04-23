@@ -127,4 +127,8 @@ v-else-if v-else 只能有v-if才能嵌套，且嵌套的元素中没有被打�
     5.v-pre <div v-pre>{{不会编译}}</div> v-pre 标识后，vue认为这个标签不需要编译，解析。可以优化编译速度。
 
 
-
+ ### 8.生命周期 
+        1.beforeCreated:之前进行了vue初始化：生命周期，事件，但数据代理暂未开始。此时无法通过vm访问到data中的数据，methods中的方法。
+        2.created：之前初始化数据监测，数据代理，此时可以通过vm访问到data中的数据，methods中的方法。
+        1.mounted：挂载，vue完成模板的解析，并把真实的dom元素放入页面后调用mounted
+        2
