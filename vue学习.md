@@ -131,8 +131,8 @@ v-else-if v-else 只能有v-if才能嵌套，且嵌套的元素中没有被打�
         1.beforeCreated:之前进行了vue初始化：生命周期，事件，但数据代理暂未开始。此时无法通过vm访问到data中的数据，methods中的方法。
         2.created：之前初始化数据监测，数据代理，此时可以通过vm访问到data中的数据，methods中的方法。
         3.beforeMounte：页面呈现的是未经vue编译过的dom，此时对dom的操作都无效。
-        4.mounted：挂载，vue完成模板的解析，并把真实的dom元素放入页面后调用mounted，页面呈现的是经过vue编译的dom，初始化结束。
-        5.beforeUpdate 
+        4.mounted：挂载，vue完成模板的解析，并把真实的dom元素放入页面后调用mounted，页面呈现的是经过vue编译的dom，初始化结束。此时可以做一些常用操作，写定时器，发送ajax请求，消息订阅，绑定自定义事件
+        5.beforeUpdate 此时数据是新的，页面是旧的，页面还没有与数据同步。
         6.updated 
         7.beforeDestory
         8.destory
